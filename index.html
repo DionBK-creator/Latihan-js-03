@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Stopwatch</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #display {
+            font-size: 60px;
+            font-weight: bold;
+            margin: 30px;
+            color: #222;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        #start {
+            background-color: green;
+        }
+
+        #stop {
+            background-color: red;
+        }
+
+        #reset {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Second Stopwatch</h1>
+
+    <div id="display">0</div>
+
+    <button id="start" onclick="startStopwatch()">Start</button>
+    <button id="stop" onclick="stopStopwatch()">Stop</button>
+    <button id="reset" onclick="resetStopwatch()">Reset</button>
+
+    <script>
+        let seconds = 0;
+        let timer = null;
+
+        function startStopwatch() {
+            if (timer !== null) return;
+
+            timer = setInterval(function() {
+                seconds++;
+                document.getElementById("display").textContent = seconds;
+            }, 1000);
+        }
+
+        function stopStopwatch() {
+            clearInterval(timer);
+            timer = null;
+        }
+
+        function resetStopwatch() {
+            clearInterval(timer);
+            timer = null;
+            seconds = 0;
+            document.getElementById("display").textContent = seconds;
+        }
+    </script>
+
+</body>
+</html>
